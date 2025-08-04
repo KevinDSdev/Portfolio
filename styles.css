@@ -126,7 +126,15 @@ body{
       
       
     }
-    .TextBackdrop{
+    
+  }
+
+
+
+
+  
+}
+.TextBackdrop{
       z-index: -1;
       width: inherit;
       height: 100%;
@@ -141,14 +149,6 @@ body{
         color: #efeded;
       }
     }
-  }
-
-
-
-
-  
-}
-
 .About{
  background-color: transparent;
   width: 100vw;
