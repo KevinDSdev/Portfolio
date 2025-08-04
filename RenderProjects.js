@@ -1,24 +1,23 @@
-
-import { ProjectDatas } from './ProjectData';
+import { ProjectDatas } from './ProjectData.js';
 
 const container = document.getElementById('ProjContainer');
 
-export function renderBlogCards(filter = '') {
+export function renderProjCards(filter = '') {
   if (!container) return;
 
   container.innerHTML = ''; 
 
-  BlogDatas
-    .filter(blog => blog.Name.toLowerCase().includes(filter.toLowerCase()))
-    .forEach(blog => {
+  ProjectDatas
+    .filter(proj => proj.Name.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(proj => {
       const card = document.createElement('div');
       card.className = 'Blogcard';
       card.innerHTML = `
         <div class="BlogIMG">
-          <img src="./Images/BlogIMGs/${blog.ImageName}.png" alt="${blog.Name}">
+          <img src="./Images/BlogIMGs/${proj.ImageName}.png" alt="${proj.Name}">
         </div>
         <div class="BlogHeading">
-          <h2>${blog.Name}</h2>
+          <h2>${proj.Name}</h2>
         </div>
       `;
       container.appendChild(card);

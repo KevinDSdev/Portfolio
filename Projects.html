@@ -18,7 +18,7 @@
         <a href="./index.html" id="SkillsButtonID"><p>Skills</p></a>      
                
         <a href=""><p>Contact</p></a>  
-        <a href=""><p>Projects</p></a>        
+        <a href="./Blog.html"><p>Blog</p></a>        
             
       </div>
       <div class="HamBurger" id="HamburgerMenuButton" onclick="toggleSidebar()">
@@ -32,7 +32,7 @@
         <a href="./index.html" id="SkillsButtonID3" onclick="toggleSidebar()"><p>Skills</p></a>       
                   
         <a href="" onclick="toggleSidebar()"><p>Contact</p></a>  
-        <a href="" onclick="toggleSidebar()"><p>Projects</p></a>   
+        <a href="./Blog.html" onclick="toggleSidebar()"><p>Blog</p></a>   
         </div>
 
 
@@ -46,29 +46,25 @@
     </div >
         
     </div>
-    <div class="searchResults" id="BlogContainer" >
+    <div class="searchResults" id="ProjContainer" >
         
           
     </div>
 
     <script src="./scripts.js"></script>
     <script type="module">
-  import { renderBlogCards } from './renderBlogs.js';
+ import { renderProjCards } from './RenderProjects.js';
 
- 
-  renderBlogCards();
+renderProjCards(); // render all initially
 
-  
-  const searchInput = document.querySelector('.input');
-  const searchButton = document.querySelector('.Searchbutton');
+const searchInput = document.querySelector('.input');
 
-  function handleSearch() {
-    const keyword = searchInput.value.trim();
-    renderBlogCards(keyword);
-  }
+function handleSearch() {
+  const keyword = searchInput.value.trim();
+  renderProjCards(keyword);
+}
 
-  searchInput.addEventListener('input', handleSearch); 
-  searchButton.addEventListener('click', handleSearch); 
+searchInput.addEventListener('input', handleSearch); 
 </script>
 
    
