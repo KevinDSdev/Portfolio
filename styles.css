@@ -356,7 +356,11 @@ body{
         width: 100%;
         height: auto;
       }
-      .TextBackdrop{
+      
+    }
+      
+  }
+.TextBackdrop{
         height: 100vw;
         
       p{
@@ -364,10 +368,6 @@ body{
         font-size: 35vw;
       }
       }
-    }
-      
-  }
-
   .LandingInfo  {
     .MainTextDiv{
        .SmallDescrpition{
