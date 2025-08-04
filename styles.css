@@ -13,6 +13,7 @@ body{
   display: flex;
   align-items: center;
   padding-left: 5%;
+ 
 }
 .NavButtons{
   width: 82%;
@@ -51,6 +52,18 @@ body{
         width: 100%;
         
     }
+}
+
+.HamBurger{
+  position: absolute;
+  scale: 0;
+  z-index: 5;
+  display: flex;
+  height: 75%;
+  img{
+    height: 75%;
+    width: auto;
+  }
 }
 
 .LandingInfo{
@@ -325,6 +338,43 @@ body{
     }
   }
 }
+.SlideinMenu{
+  translate: 0%;
+  scale: 0;
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 4;
+ left: -100%;
+ transition: left 0.3s ease;
+overflow: hidden;
+  .HamburgerItems{
+    margin-top: 18%;
+    margin-left: 15%;
+    background-color: transparent;
+    width: 65%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+     a{
+        text-decoration: none;
+    }
+
+    p{
+        font-family: "Rubik", sans-serif;
+        font-size:6vw;
+        color: #221b14;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+    }
+  
+
+  }
+}
+
 .Additionalbuttons{
   
 }
@@ -388,17 +438,27 @@ body{
 
 
   .NavBar{
-    scale: 0;
+   width: 50%;
   }
   .NavButtons {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
     padding: 1rem 0;
+    scale: 0;
   }
 
   .NavButtons p {
     font-size: 4vw;
+  }
+
+  .SlideinMenu{
+    margin-top: -2%;
+    scale: 1;
+    background-color: #e1dedb;
+  }
+  .HamBurger{
+    scale: 1;
   }
 .Button {
         height: auto;
@@ -471,6 +531,7 @@ body{
     }
 .SkillsImg{
   width: 100%;
+  overflow: hidden;
 }
 }
 
