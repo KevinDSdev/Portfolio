@@ -1,31 +1,31 @@
-export const BlogDatas = [
+export const ProjectDatas = [
 {
     id:0,
-    Name:'Blog test 1',
+    Name:'Proj test 1',
     ImageName:'1'
 
 },
 {
     id:1,
-    Name:'Blog test 2',
+    Name:'Proj test 2',
     ImageName:'1'
 
 },
 {
     id:1,
-    Name:'Blog test 3',
+    Name:'Proj test 3',
     ImageName:'1'
 
 },
 {
     id:1,
-    Name:'Blog test 4',
+    Name:'Proj test 4',
     ImageName:'1'
 
 },
 {
     id:1,
-    Name:'Blog test 5',
+    Name:'Proj test 5',
     ImageName:'1'
 
 },
