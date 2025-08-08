@@ -27,13 +27,9 @@ function toggleSidebar() {
     sidebar.style.left = "0%";
   }
 }
-
-function GoToHome(e){
- e.preventDefault();
-  const target = document.querySelector('#HomeID');
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
+function GoToLink(e, url) {
+  e.preventDefault();
+  window.location.href = url;
 }
 
 
