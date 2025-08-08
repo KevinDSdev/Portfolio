@@ -68,8 +68,8 @@
   scroll-padding-left: 1rem;
   gap: 1rem;
 
-  padding: 0 1rem; /* Add left & right padding */
-  box-sizing: border-box; /* Make padding included in width */
+  padding: 0 1rem; 
+  box-sizing: border-box; 
 }
 
 .Blogcard {
@@ -161,7 +161,21 @@ left: 0;
 }
 
 
+.WebHeading{
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 10vh;
+  margin-left: -10%;
+  
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  color: #221b14;
+  font-size: 10vw;
 
+  scale: 0;
+}
 
 @media (max-width: 768px) or (orientation: portrait){
     .SearchBargroup{
@@ -178,5 +192,9 @@ left: 0;
   min-width: 80vw;
   max-width: 80vw;
   height: 50%;
+}
+
+.WebHeading{
+  scale: 1;
 }
 }
