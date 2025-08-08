@@ -383,6 +383,21 @@ overflow: hidden;
   height: 30vh;
   
 }
+.WebHeading{
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 10vh;
+  margin-left: -10%;
+  
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  color: #221b14;
+  font-size: 10vw;
+
+  scale: 0;
+}
 
 @keyframes float {
     from{
@@ -541,6 +556,9 @@ overflow: hidden;
 }
 .Additionalbuttons{
   flex-direction: column;
+}
+.WebHeading{
+  scale: 1;
 }
 }
 

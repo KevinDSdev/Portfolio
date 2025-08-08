@@ -8,6 +8,15 @@ function GoToAbout(e){
   }
 }
 
+function GoToHome(e){
+    e.preventDefault();
+  window.location.href = './index.html';;
+}
+
+function GoToContact(e){
+    e.preventDefault();
+  window.location.href = './Contact.html';;
+}
 
 function GoToSKills(e){
    e.preventDefault();
@@ -31,7 +40,10 @@ function GoToLink(e, url) {
   e.preventDefault();
   window.location.href = url;
 }
-
+function GoToProjs(e) {
+  e.preventDefault();
+  window.location.href = './Projects.html';;
+}
 
 
 

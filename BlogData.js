@@ -7,7 +7,7 @@ export const BlogDatas = [
 },
 {
   id:1,
-    Name:'Redirect to home',
+    Name:'Redirect to GitHub pages',
     ImageName:'1',
     url:'https://kevindsdev.github.io/Portfolio/'
 
