@@ -398,6 +398,21 @@ overflow: hidden;
 
   scale: 0;
 }
+.BackText{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    z-index: -2;
+    transform: rotate(-45deg);
+    p{
+
+        color: #eeebe9;
+        font-family: "Playfair Display", serif;
+        font-size: 18vw;
+        margin-top: -27%;
+    }
+}
 
 @keyframes float {
     from{
@@ -560,5 +575,15 @@ overflow: hidden;
 .WebHeading{
   scale: 1;
 }
+
+
+
+.BackText{
+    p{
+        font-size: 35vw;
+        margin-left: -25%;
+        margin-top: -50%;
+    }
+  }
 }
 
