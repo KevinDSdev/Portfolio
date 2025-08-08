@@ -1,0 +1,6 @@
+.ContactHolder{
+    display: flex;
+    background-color: red;
+    width: 99vw;
+    height: 100vh;
+}
