@@ -45,6 +45,34 @@ function GoToProjs(e) {
   window.location.href = './Projects.html';;
 }
 
+let progress = 0;
+    const loadingText = document.getElementById("loading-text");
+    const progressBar = document.querySelector(".progress-bar");
+    const loadingScreen = document.getElementById("loading-screen");
+    const content = document.getElementById("content");
 
+    function updateLoading() {
+        if (progress < 100) {
+            progress++;
+            loadingText.textContent = progress + "%";
+            progressBar.style.width = progress + "%";
+            setTimeout(updateLoading, 50); 
+        } else {
+         
+            setTimeout(() => {
+              loadingScreen.style.opacity = "0";
+            }, 300);
+            
+            setTimeout(() => {
+              loadingScreen.style.display = "none";
+              content.classList.add("visible");
+            }, 500);
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        updateLoading();
+    });
 
 

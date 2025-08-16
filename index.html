@@ -11,7 +11,17 @@
   
 </head>
 <body >
-    <div class="NavBar" id="HomeID">
+ 
+<div id="loading-screen">
+    <div id="loading-text">0%</div>
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+</div>
+
+
+<div id="content">
+      <div class="NavBar" id="HomeID">
       <div class="NavButtons">
         
         <a href="" id="AboutScrollBTN" onclick='GoToAbout(event)'><p>About</p></a>
@@ -145,6 +155,8 @@
         <button class="LearnMoreButton" id="Home" onclick="GoToHome(event)">Home</button>
       </div>
     </div>
+</div>
+    
 
 
  <script src="./scripts.js"></script>

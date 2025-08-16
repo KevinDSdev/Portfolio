@@ -2,56 +2,129 @@ body{
   background-color:#fefbf8 ;
   overflow-x: hidden;
   scroll-behavior: smooth !important;
+  padding-top: 7vh;
+  min-height: 100vh;
 }
+ /* Loading screen container */
+    #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fefbf8;
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
 
+    
+    #loading-text {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        font-family: "Rubik", sans-serif;
+    }
+
+ 
+    .progress-container {
+        width: 30%;
+        background-color: #e8dede;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+ 
+    .progress-bar {
+        height: 20px;
+        width: 0%;
+        background-color: #221b14;
+        transition: width 0s;
+    }
+
+   
+  #content {
+  opacity: 0;
+  transition: opacity .5s ease-in;
+}
+#content.visible {
+  opacity: 1;
+}
 .NavBar{
-  position: absolute;
-  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(254, 251, 248, 0.95);
+  backdrop-filter: blur(10px);
   width: 100vw;
   height: 7%;
-
+  min-height: 60px;
   display: flex;
   align-items: center;
   padding-left: 5%;
- 
+  box-shadow: 0 8px 32px rgba(34, 27, 20, 0.25), 0 2px 16px rgba(34, 27, 20, 0.15);
+  border-radius: 0 0 20px 20px;
+  z-index: 100;
+  transition: all 0.3s ease;
 }
+
+.NavBar.menu-active {
+  background-color: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.NavBar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 27, 20, 0.2), transparent);
+}
+
+@media (max-width: 768px) or (orientation: portrait) {
+  .NavBar::after {
+    display: none;
+  }
+}
+
 .NavButtons{
   width: 82%;
-    height: 100%;
-   display: flex;
-   flex-direction: row;
-    background-color: transparent;
-    margin-right: 1%;
-    gap: 4%;
-
-    a{
-        text-decoration: none;
-    }
-
-    p{
-        font-family: "Rubik", sans-serif;
-        font-size:1.2vw;
-        color: #221b14;
-        position: relative;
-        cursor: pointer;
-        user-select: none;
-    }
-    P::after{
-        content: '';
-        position: absolute;
-        height: 3px;
-        border-radius: 2px;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        background: #221b14;
-        
-        transition: width .2s;
-    }
-    p:hover:after{
-        width: 100%;
-        
-    }
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  margin-right: 1%;
+  gap: 4%;
+  a{
+    text-decoration: none;
+  }
+  p{
+    font-family: "Rubik", sans-serif;
+    font-size: 20px;
+    color: #221b14;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+  P::after{
+    content: '';
+    position: absolute;
+    height: 3px;
+    border-radius: 2px;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background: #221b14;
+    transition: width .2s;
+  }
+  p:hover:after{
+    width: 100%;
+  }
 }
 
 .HamBurger{
@@ -71,14 +144,13 @@ body{
   width: 100vw;
   height: 98vh;
   overflow: hidden;
- display: flex;
- flex-direction: row;
- user-select: none;
+  display: flex;
+  flex-direction: row;
+  user-select: none;
   .MainTextDiv{
     background-color: transparent;
     height: 100%;
     width: 60%;
-
     .SmallText{
       display: flex;
       align-items: center;
@@ -88,7 +160,7 @@ body{
       margin-top: 15%;
       height: 8%;
       color: #68645f;
-       font-family: "Rubik", sans-serif;
+      font-family: "Rubik", sans-serif;
     }
     .BigName{
       display: flex;
@@ -115,16 +187,13 @@ body{
       font-size: 1.2vw;
       text-align: center;
     }
-    
-      }
+  }
   .LandingImgDiv{
     display: flex;
     background-color: transparent;
     justify-content: center;
     width: 50%;
     height: 99vh;
-    
-    
     .ImageHolder{
       width: 100%;
       height: 100%;
@@ -133,49 +202,37 @@ body{
       align-items: end;
     }
     img{
-
       width: 100%;
       height: auto;
-      
-      
     }
-    
   }
-
-
-
-
-  
 }
-.TextBackdrop{
-      z-index: -1;
-      width: inherit;
-      height: 100%;
-      background-color: transparent;
-      position: absolute;
-      overflow: hidden;
 
-      p{
-        margin-top: -40%;
-        font-family: "Playfair Display", serif;
-        font-size: 13vw;
-        color: #efeded;
-      }
-    }
+.TextBackdrop{
+  z-index: -1;
+  width: inherit;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  overflow: hidden;
+  p{
+    margin-top: -40%;
+    font-family: "Playfair Display", serif;
+    font-size: 13vw;
+    color: #efeded;
+  }
+}
+
 .About{
- background-color: transparent;
+  background-color: transparent;
   width: 100vw;
   height: 98vh;
   display: flex;
   flex-direction: row;
-  
-
   .AboutInfo{
     width: 60%;
     height: 100%;
     background-color: transparent;
-    
-
     .AboutHeading{
       width: 100%;
       height: 25%;
@@ -188,9 +245,8 @@ body{
       font-size: 5vw;
       font-weight: 500;
     }
-
     .AboutPara{
-       width: 60%;
+      width: 60%;
       height: 50%;
       background-color: transparent;
       font-family: "Rubik", sans-serif;
@@ -210,77 +266,73 @@ body{
     width: 40%;
     height: 100%;
     z-index: -1;
-   background-color: transparent;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-    
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img{
-      
       width: 140%;
       height: auto;
-     
       margin-left: -25%;
       animation: float 4s linear infinite;
     }
   }
 }
+
 .Button{
-      background-color: tra;
-      width: 100%;
-      height: 25%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .LearnMoreButton {
-      --color1: #2a322a;
-      --color2: #101210;
-      perspective: 1000px;
-      padding: 2em 2em;
-      background: linear-gradient(var(--color1), var(--color2));
-      border: none;
-      outline: none;
-      font-size: 20px;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: #fff;
-      text-shadow: 0 10px 10px #000;
-      cursor: pointer;
-      transform: rotateX(70deg) rotateZ(30deg);
-      transform-style: preserve-3d;
-      transition: transform 0.5s;
-    }
+  background-color: tra;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .LearnMoreButton {
+    --color1: #2a322a;
+    --color2: #101210;
+    perspective: 1000px;
+    padding: 2em 2em;
+    background: linear-gradient(var(--color1), var(--color2));
+    border: none;
+    outline: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff;
+    text-shadow: 0 10px 10px #000;
+    cursor: pointer;
+    transform: rotateX(70deg) rotateZ(30deg);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+  .LearnMoreButton::before {
+    content: "";
+    width: 100%;
+    height: 15px;
+    background-color: var(--color2);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+  }
+  .LearnMoreButton::after {
+    content: "";
+    width: 15px;
+    height: 100%;
+    background-color: var(--color1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: rotateY(-90deg);
+    transform-origin: right;
+  }
+  .LearnMoreButton:hover {
+    transform: rotateX(30deg) rotateZ(0);
+  }
+}
 
-    .LearnMoreButton::before {
-      content: "";
-      width: 100%;
-      height: 15px;
-      background-color: var(--color2);
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      transform: rotateX(90deg);
-      transform-origin: bottom;
-    }
-
-    .LearnMoreButton::after {
-      content: "";
-      width: 15px;
-      height: 100%;
-      background-color: var(--color1);
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: rotateY(-90deg);
-      transform-origin: right;
-    }
-
-    .LearnMoreButton:hover {
-      transform: rotateX(30deg) rotateZ(0);
-    }
-        }
 .skills{
- background-color: transparent;
+  background-color: transparent;
   width: 100vw;
   height: 98vh;
   display: flex;
@@ -316,7 +368,6 @@ body{
       }
       ul{
         margin-left: 7%;
-      
       }
     }
     .ProjectsButton{
@@ -324,13 +375,11 @@ body{
       height: 20%;
       background-color: transparent;
     }
-
   }
   .SkillsImg{
     background-color: transparent;
     width: 40%;
     height: 100%;
-
     img{
       width: 100%;
       height: auto;
@@ -338,40 +387,38 @@ body{
     }
   }
 }
+
 .SlideinMenu{
   translate: 0%;
   scale: 0;
-  position: absolute;
+  position: fixed;
+  top: 0;
   width: 70%;
-  height: 100%;
+  height: 100vh;
   background-color: transparent;
   z-index: 4;
- left: -100%;
- transition: left 0.3s ease;
-overflow: hidden;
+  left: -100%;
+  transition: left 0.3s ease;
+  overflow: hidden;
   .HamburgerItems{
-    margin-top: 18%;
+    margin-top: 60px;
     margin-left: 15%;
     background-color: transparent;
     width: 65%;
-    height: 100%;
-
+    height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
-     a{
-        text-decoration: none;
+    a{
+      text-decoration: none;
     }
-
     p{
-        font-family: "Rubik", sans-serif;
-        font-size:6vw;
-        color: #221b14;
-        position: relative;
-        cursor: pointer;
-        user-select: none;
+      font-family: "Rubik", sans-serif;
+      font-size: 24px;
+      color: #221b14;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
     }
-  
-
   }
 }
 
@@ -381,81 +428,86 @@ overflow: hidden;
   justify-content: center;
   width: 100%;
   height: 30vh;
-  
 }
+
 .WebHeading{
   display: flex;
   position: absolute;
   width: 100vw;
   height: 10vh;
   margin-left: -10%;
-  
   align-items: center;
   justify-content: center;
   font-family: "Playfair Display", serif;
   color: #221b14;
   font-size: 10vw;
-
   scale: 0;
 }
-.BackText{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    z-index: -2;
-    transform: rotate(-45deg);
-    p{
 
-        color: #eeebe9;
-        font-family: "Playfair Display", serif;
-        font-size: 18vw;
-        margin-top: -27%;
-    }
+.BackText{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: -2;
+  transform: rotate(-45deg);
+  p{
+    color: #eeebe9;
+    font-family: "Playfair Display", serif;
+    font-size: 18vw;
+    margin-top: -27%;
+  }
 }
 
 @keyframes float {
-    from{
-        transform:rotate(0deg) translateY(-12px)rotate(0deg);
-    }
-    to{
-        transform:rotate(360deg) translateY(-12px) rotate(-360deg);
-    }
+  from{
+    transform:rotate(0deg) translateY(-12px)rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg) translateY(-12px) rotate(-360deg);
+  }
 }
 
 @media (max-width: 768px) or (orientation: portrait) {
+  body {
+    padding-top: 60px;
+  }
+  .NavBar {
+    height: 60px;
+    min-height: 60px;
+    border-radius: 0 0 15px 15px;
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
   .LandingInfo {
     flex-direction: column;
-    height: auto; 
+    height: auto;
   }
-
   .LandingInfo  {
     .MainTextDiv{
-      width: 100vw; 
+      width: 100vw;
       height: auto;
     }
     .LandingImgDiv{
-      width: 100vw; 
-      height: auto; 
+      width: 100vw;
+      height: auto;
       img{
         width: 100%;
         height: auto;
       }
-      
     }
-      
   }
-.TextBackdrop{
-        height: 100vw;
-        
-      p{
-        margin-top: -50%;
-        font-size: 35vw;
-      }
-      }
+  .TextBackdrop{
+    height: 100vw;
+    p{
+      margin-top: -50%;
+      font-size: 35vw;
+    }
+  }
   .LandingInfo  {
     .MainTextDiv{
-       .SmallDescrpition{
+      .SmallDescrpition{
         margin-top: 5%;
         width: 60%;
         background-color: transparent;
@@ -464,16 +516,10 @@ overflow: hidden;
       .BigName {
         font-size:10vw;
       }
-      
     }
-   
-    
   }
-
-
-
   .NavBar{
-   width: 50%;
+    width: 50%;
   }
   .NavButtons {
     flex-direction: column;
@@ -482,108 +528,97 @@ overflow: hidden;
     padding: 1rem 0;
     scale: 0;
   }
-
   .NavButtons p {
-    font-size: 4vw;
+    font-size: 16px;
   }
-
   .SlideinMenu{
-    margin-top: -2%;
+    margin-top: 0;
     scale: 1;
     background-color: #e1dedb;
+    box-shadow: -8px 0 32px rgba(34, 27, 20, 0.3), -4px 0 16px rgba(34, 27, 20, 0.2);
   }
   .HamBurger{
     scale: 1;
   }
-.Button {
-        height: auto;
-        padding: 2rem 0;
-        .LearnMoreButton{
-          font-size: 10px;
-          padding: 3vw 3vw;
+  .Button {
+    height: auto;
+    padding: 2rem 0;
+    .LearnMoreButton{
+      font-size: 10px;
+      padding: 3vw 3vw;
     }
-      }
-.About{ 
-  flex-direction: column;
-   background-color: transparent;
-   height: auto;
-  .AboutInfo{
-    width: 100%;
+  }
+  .About{
+    flex-direction: column;
     background-color: transparent;
     height: auto;
-     .SkillsButton{
+    .AboutInfo{
+      width: 100%;
       background-color: transparent;
-      margin-top: 0%;
-     
-    }
-    .AboutHeading{
-      font-size: 10vw;
-    }
-    .AboutPara{
-      background-color: transparent;
-      font-size: 3vw;
       height: auto;
+      .SkillsButton{
+        background-color: transparent;
+        margin-top: 0%;
+      }
+      .AboutHeading{
+        font-size: 10vw;
+      }
+      .AboutPara{
+        background-color: transparent;
+        font-size: 3vw;
+        height: auto;
+      }
     }
-  }
-
-  .QuestionMarkImg{
-    width: 100%;
-    height: auto;
-     
-
-  background-color: transparent;
-    img{
+    .QuestionMarkImg{
       width: 100%;
       height: auto;
+      background-color: transparent;
+      img{
+        width: 100%;
+        height: auto;
+      }
     }
   }
- 
-}
-.skills{
-  height: auto;
-  background-color: transparent;
-  flex-direction: column;
+  .skills{
+    height: auto;
+    background-color: transparent;
+    flex-direction: column;
     .SkillsInfo{
       height: auto;
       width: 100%;
       .SkillsHeading{
         font-size: 7vw;
       }
-       .SkillPara{
+      .SkillPara{
         font-size: 2.1vw;
         height: auto;
-      p{
-        margin-left: 25%;
-        margin-right: 25%;
-        margin-top: 7%;
-        font-size: 3vw;
-      }
-      ul{
-        margin-left: 32%;
-      
+        p{
+          margin-left: 25%;
+          margin-right: 25%;
+          margin-top: 7%;
+          font-size: 3vw;
+        }
+        ul{
+          margin-left: 32%;
+        }
       }
     }
+    .SkillsImg{
+      width: 100%;
+      overflow: hidden;
     }
-.SkillsImg{
-  width: 100%;
-  overflow: hidden;
-}
-}
-.Additionalbuttons{
-  flex-direction: column;
-}
-.WebHeading{
-  scale: 1;
-}
-
-
-
-.BackText{
+  }
+  .Additionalbuttons{
+    flex-direction: column;
+  }
+  .WebHeading{
+    scale: 1;
+  }
+  .BackText{
     p{
-        font-size: 35vw;
-        margin-left: -25%;
-        margin-top: -50%;
+      font-size: 35vw;
+      margin-left: -25%;
+      margin-top: -50%;
     }
   }
 }
-
