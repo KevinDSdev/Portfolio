@@ -51,24 +51,7 @@ const progressBar = document.querySelector(".progress-bar");
 const loadingScreen = document.getElementById("loading-screen");
 const content = document.getElementById("content");
 
-function updateLoading() {
-    if (progress < 100) {
-        progress++;
-        loadingText.textContent = progress + "%";
-        progressBar.style.width = progress + "%";
-        setTimeout(updateLoading, 50);
-    } else {
-        // Once loading is complete, fade out loader
-        setTimeout(() => {
-            loadingScreen.style.opacity = "0";
-        }, 300);
-        
-        setTimeout(() => {
-            loadingScreen.style.display = "none";
-            content.classList.add("visible");
-        }, 800);
-    }
-}
+
 
 // Wait until everything (images, fonts, CSS) is fully loaded
 window.onload = () => {
@@ -92,6 +75,6 @@ window.onload = () => {
 };
 
 
-document.addEventListener("DOMContentLoaded", () => {
+//document.addEventListener("DOMContentLoaded", () => {
     updateLoading();
-});
+//});
