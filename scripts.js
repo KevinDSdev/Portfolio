@@ -51,11 +51,25 @@ const progressBar = document.querySelector(".progress-bar");
 const loadingScreen = document.getElementById("loading-screen");
 const content = document.getElementById("content");
 
+let pageLoaded = false;
 
+// Update loader
+function updateLoading() {
+    if (progress < 90) { // Fake loading up to 90%
+        progress++;
+        loadingText.textContent = progress + "%";
+        progressBar.style.width = progress + "%";
+        setTimeout(updateLoading, 30); // adjust speed
+    } else if (pageLoaded) {
+        finishLoading();
+    } else {
+        // Wait until pageLoaded becomes true
+        setTimeout(updateLoading, 100);
+    }
+}
 
-// Wait until everything (images, fonts, CSS) is fully loaded
-window.onload = () => {
-    // Finish progress instantly if it hasn't reached 100%
+// Finish loader when page is fully loaded
+function finishLoading() {
     const finishInterval = setInterval(() => {
         if (progress < 100) {
             progress++;
@@ -63,18 +77,22 @@ window.onload = () => {
             progressBar.style.width = progress + "%";
         } else {
             clearInterval(finishInterval);
-            setTimeout(() => {
-                loadingScreen.style.opacity = "0";
-            }, 300);
+            loadingScreen.style.opacity = "0";
             setTimeout(() => {
                 loadingScreen.style.display = "none";
-                content.classList.add("visible");
-            }, 800);
+                content.classList.add("visible"); // easing via CSS
+            }, 500);
         }
     }, 20);
+}
+
+// Start fake loading immediately
+document.addEventListener("DOMContentLoaded", () => {
+    updateLoading();
+});
+
+// Mark page as fully loaded when everything is ready
+window.onload = () => {
+    pageLoaded = true;
 };
 
-
-//document.addEventListener("DOMContentLoaded", () => {
-    updateLoading();
-//});
