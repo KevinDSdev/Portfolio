@@ -28,6 +28,7 @@ function GoToSKills(e){
 
 
 
+
 function toggleSidebar() {
   const sidebar = document.getElementById("SlideinMenuID");
   if (sidebar.style.left === "0%") {
@@ -45,6 +46,15 @@ function GoToProjs(e) {
   window.location.href = './Projects.html';;
 }
 
+function GoToTop(e) {
+    if (e) e.preventDefault(); // only prevent default if event exists
+    const target = document.getElementById('Home');
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+
 let progress = 0;
 const loadingText = document.getElementById("loading-text");
 const progressBar = document.querySelector(".progress-bar");
@@ -53,22 +63,22 @@ const content = document.getElementById("content");
 
 let pageLoaded = false;
 
-// Update loader
+
 function updateLoading() {
-    if (progress < 90) { // Fake loading up to 90%
+    if (progress < 90) { 
         progress++;
         loadingText.textContent = progress + "%";
         progressBar.style.width = progress + "%";
-        setTimeout(updateLoading, 30); // adjust speed
+        setTimeout(updateLoading, 30); 
     } else if (pageLoaded) {
         finishLoading();
     } else {
-        // Wait until pageLoaded becomes true
+        
         setTimeout(updateLoading, 100);
     }
 }
 
-// Finish loader when page is fully loaded
+
 function finishLoading() {
     const finishInterval = setInterval(() => {
         if (progress < 100) {
@@ -79,19 +89,21 @@ function finishLoading() {
             clearInterval(finishInterval);
             loadingScreen.style.opacity = "0";
             setTimeout(() => {
+             
                 loadingScreen.style.display = "none";
-                content.classList.add("visible"); // easing via CSS
+                content.classList.add("visible");
+                 GoToTop();
             }, 500);
         }
     }, 20);
 }
 
-// Start fake loading immediately
+
 document.addEventListener("DOMContentLoaded", () => {
     updateLoading();
 });
 
-// Mark page as fully loaded when everything is ready
+
 window.onload = () => {
     pageLoaded = true;
 };
