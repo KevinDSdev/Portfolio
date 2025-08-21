@@ -1,11 +1,28 @@
-function SubmitContact(e){
-    e.preventDefault();
-    const Name = document.getElementById('NameInput');
-    const Email = document.getElementById('EmailINput');
-    const Other = document.getElementById('OtherInput');
+function SubmitContact(event) {
+  event.preventDefault();
 
-    alert(`Succesfully Submited \nName: ${Name.value}\nEmail: ${Email.value}\nMessage: ${Other.value}`);
+  
+  const name = document.getElementById("NameInput").value.trim();
+  const email = document.getElementById("EmailINput").value.trim();
+  const other = document.getElementById("OtherInput").value.trim();
 
-    location.reload();
-    
+
+  if (name === "" || email === "" || other === "") {
+    alert("⚠️ Please fill out all fields before submitting.");
+    return; 
+  }
+
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("⚠️ Please enter a valid email address.");
+    return;
+  }
+
+
+  document.getElementById("PopupID").classList.add("show");
+}
+
+function closePopup() {
+  document.getElementById("PopupID").classList.remove("show");
 }

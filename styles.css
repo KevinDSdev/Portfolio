@@ -5,7 +5,7 @@ body{
   padding-top: 7vh;
   min-height: 100vh;
 }
- /* Loading screen container */
+
     #loading-screen {
         position: fixed;
         top: 0;
